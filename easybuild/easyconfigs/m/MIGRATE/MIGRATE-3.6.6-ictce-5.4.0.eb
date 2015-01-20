@@ -9,7 +9,7 @@ version = "3.6.6"
 homepage = 'http://popgen.sc.fsu.edu/Migrate/Migrate-n.html'
 description = """Migrate estimates effective population sizes and past migration rates between n population assuming a migration matrix model with asymmetric migration rates and different subpopulation sizes. Migrate uses maximum likelihood or Bayesian inference to jointly estimate all parameters."""
 
-toolchain = {'name': 'goolf', 'version': '1.4.10'} 
+toolchain = {'name': 'ictce', 'version': '5.4.0'} 
 toolchainopts = {'opt': True, 'optarch': True, 'unroll': True, 'static': False}
 
 # For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
