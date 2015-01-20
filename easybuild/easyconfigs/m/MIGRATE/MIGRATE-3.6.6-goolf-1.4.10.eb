@@ -1,0 +1,43 @@
+# Note:
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+# It was auto-generated based on a template easyconfig, so it should be used with care.
+
+name = 'MIGRATE'
+version = '3.6.6'
+
+homepage = 'http://popgen.sc.fsu.edu/Migrate/Migrate-n.html'
+description = """Migrate estimates effective population sizes and past migration rates between n population assuming a migration matrix model with asymmetric migration rates and different subpopulation sizes. Migrate uses maximum likelihood or Bayesian inference to jointly estimate all parameters."""
+
+# toolchain name should be 'TEMPLATE' if this is a template, so EasyBuild knows and is willing to use it as a template
+toolchain = {'name': 'goolf', 'version': '1.4.10'}
+toolchainopts = {'opt': True, 'usempi': True}
+
+# For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
+sources = ['%(namelower)s-%(version)s.src.tar.gz']
+source_urls = ['http://popgen.sc.fsu.edu/newversions/','http://popgen.sc.fsu.edu/currentversions/','http://popgen.sc.fsu.edu/oldversions/3.x/3.6/']
+
+patches = []
+
+dependencies = [('zlib', '1.2.5')]
+
+preconfig = 'cd src '
+configopts = '--with-zlib=system --enable-sse2 '
+
+buildopts = 'mpis '
+
+#binary_files = ["migrate-n-mpi", "migrate-n", "singleExport2mrf", "mrfSubsetByTargetName"]
+binary_files = ["migrate-n-mpi"]
+
+#files_to_copy = [
+#    (['../src/%s' % x for x in binary_files], "bin"),
+#    "LICENSE", "README", "bios", "mrf", "test"
+#]
+
+# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
+sanity_check_paths = {
+    'files': ['bin/%s' % x for x in binary_files],
+    'dirs': []
+}
+
+# You SHOULD change the following line; Kindly consult other easyconfigs for possible options
+moduleclass = 'base'
