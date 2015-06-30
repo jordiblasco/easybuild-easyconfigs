@@ -31,8 +31,9 @@ dependencies = [
     ('METIS', '5.1.0'),
 ]
 
-#The following options in the FCFLAGS and CFLAGS improves the performance significantly (Intel toolchain only)
-configopts = "FC=$MPIF90 FLAGS='-O3 -xHost -openmp -ip -prec-div -static-intel -sox -I$MKLROOT/include' FCFLAGS=$FLAGS CFLAGS=$FLAGS"
+#The standard Easybuild FCFLAGS doesn't work in this case for Intel Toolchain.
+configopts = "FC=$MPIF90 FCFLAGS='-O3 -xHost -ip -prec-div -static-intel -sox -I$MKLROOT/include' "
+configopts = "CFLAGS='-O3 -xHost -ip -prec-div -static-intel -sox -I$MKLROOT/include' "
 configopts += "--disable-openmp --enable-mpi --enable-newuoa --disable-python --disable-gdlib --with-fft=fftw3 --with-pfft-prefix=$EBROOTPFFT "
 configopts += "--with-gsl-prefix=$EBROOTGSL --with-etsf-io-prefix=$EBROOTETSF_IO "
 configopts += "--with-libxc-prefix=$EBROOTLIBXC --with-gsl-prefix=$EBROOTGSL --with-etsf-io-prefix=$EBROOTETSF_IO "
