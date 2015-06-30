@@ -21,7 +21,7 @@ toolchainopts = {'usempi': True, 'openmp': True}
 sources = ['octopus-%(version)s.tar.gz']
 source_urls = ['http://www.tddft.org/programs/octopus/down.php?file=%(version)s/' ]
 
-builddependencies = [
+dependencies = [
     ('PFFT', '20150317'),
     ('libxc', '2.1.2'),
     ('netCDF', '4.3.2'),
