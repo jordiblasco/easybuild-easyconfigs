@@ -14,15 +14,15 @@ description = "A molecular surface solver, which can be used as rendering method
 toolchain = {'name': 'ictce', 'version': '5.3.0'}
 
 source_urls = ['http://www.ks.uiuc.edu/Research/vmd/extsrcs']
-sources = [('%(namelower)s.tar.Z', 'tar -xzf %s')]
+sources = [{'filename': '%(namelower)s.tar.Z', 'extract_cmd': "tar -xzf %s"}]
 
 builddependencies = [
     ('makedepend', '1.0.4'),
     ('ed', '1.9'),
 ]
 
-premakeopts = 'make INCLUDE="-I. -I$EBROOTGCC/lib/gcc/x86_64-unknown-linux-gnu/$EBVERSIONGCC/include" depend && '
-makeopts = ' && mv surf surf_%s' % ARCH
+prebuildopts = 'make INCLUDE="-I. -I$EBROOTGCC/lib/gcc/x86_64-unknown-linux-gnu/$EBVERSIONGCC/include" depend && '
+buildopts = ' && mv surf surf_%s' % ARCH
 
 files_to_copy = [(['surf_%s' % ARCH], "bin")]
 
